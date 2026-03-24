@@ -1,0 +1,25 @@
+---
+description: 编辑 skills/ 与 knowledge/ 时的约定（表层-深层模型与文档分工）
+globs:
+  - skills/**/*.md
+  - knowledge/**/*.md
+alwaysApply: false
+---
+
+# Skill 与知识文件约定
+
+## 双轨分析（问询与报告一致）
+
+- **表层**：用户明确表达的择偶条件与偏好。
+- **深层**：从叙事细节、情绪、矛盾表述中推断的真实需求；报告中用偏好-需求对照等形式呈现。
+
+## 文档分工
+
+- **维度与典型问题**放在 `knowledge/dimensions.md`（及框架文档），Skill 内写策略与阶段流转，而非重复整库问题。
+- **报告章节与写法**以 `knowledge/report-template.md` 为准；`skills/report.skill.md` 负责调用模板与推理指令。
+- 修改问询流程时，同步检查是否需更新 `knowledge/` 中的维度、边界说明或示例（如 `examples/sample-report.md`）。
+
+## 新增或改写 Skill 时
+
+- 在 Skill 头部或靠前位置保留：角色、输入输出、阶段/状态说明、与 `knowledge/` 文件的引用关系。
+- 保持各文件可单独维护、可被其他工具链复用的 Markdown 结构。

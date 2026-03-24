@@ -1,0 +1,21 @@
+---
+description: Ariadne 项目定位、架构与全局约束（来自 .codebuddy 计划提炼）
+alwaysApply: true
+---
+
+# Ariadne 项目上下文
+
+Ariadne（阿里阿德涅）是纯 Markdown Skill/Prompt 驱动的择偶需求洞察系统：通过多轮对话挖掘表层偏好与深层需求，最终输出择偶洞察报告。交付物适配 Claude、GPT、Gemini 等通用 LLM，不依赖单一平台的指令语法。
+
+## 三层架构
+
+1. **知识层**（`knowledge/`）：`framework.md` 理论框架、`dimensions.md` 维度与问题库、`report-template.md` 报告结构。
+2. **问询层**（`skills/interview.skill.md`）：四阶段策略（破冰 → 探索 → 深挖 → 确认），跟踪信息收集进度与追问。
+3. **报告层**（`skills/report.skill.md`）：基于完整对话记录，按模板做多维分析与表层/深层对照。
+
+## 全局约束
+
+- 分析聚焦择偶需求洞察；**不做心理诊断、不病理化表述**，语气积极、可建设性。
+- Skill 使用标准 Markdown，核心逻辑用自然语言描述；**避免**绑定 function calling 或某一厂商专有格式。
+- 问询 Skill 宜保持体量可控；框架与问题库以**引用知识文件**为主，避免整块硬编码进单一 prompt。
+- 报告 Skill 需明确如何从**长对话**中抽取要点，减少遗漏。
