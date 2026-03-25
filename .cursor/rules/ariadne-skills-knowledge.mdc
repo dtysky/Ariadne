@@ -17,6 +17,7 @@ alwaysApply: false
 
 - **维度与典型问题**放在 `knowledge/dimensions.md`（及框架文档），Skill 内写策略与阶段流转，而非重复整库问题。
 - **报告章节与写法**以 `knowledge/report-template.md` 为准；`skills/report.skill.md` 负责调用模板与推理指令。
+- **匹配分析**以 `skills/match.skill.md` 为准；输入两个来访者名字，读取 `output/` 下对应报告进行交叉分析。
 - 修改问询流程时，同步检查是否需更新 `knowledge/` 中的维度、边界说明或示例（如 `examples/sample-report.md`）。
 
 ## 新增或改写 Skill 时

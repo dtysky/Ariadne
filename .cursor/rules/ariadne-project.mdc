@@ -7,11 +7,12 @@ alwaysApply: true
 
 Ariadne（阿里阿德涅）是纯 Markdown Skill/Prompt 驱动的择偶需求洞察系统：通过多轮对话挖掘表层偏好与深层需求，最终输出择偶洞察报告。交付物适配 Claude、GPT、Gemini 等通用 LLM，不依赖单一平台的指令语法。
 
-## 三层架构
+## 三层架构 + 匹配层
 
 1. **知识层**（`knowledge/`）：`framework.md` 理论框架、`dimensions.md` 维度与问题库、`report-template.md` 报告结构。
-2. **问询层**（`skills/interview.skill.md`）：四阶段策略（破冰 → 探索 → 深挖 → 确认），跟踪信息收集进度与追问。
-3. **报告层**（`skills/report.skill.md`）：基于完整对话记录，按模板做多维分析与表层/深层对照。
+2. **问询层**（`skills/interview.skill.md`）：四阶段策略（破冰 → 探索 → 深挖 → 确认），跟踪信息收集进度与追问。来访者需提供名字或代号，报告输出为 `report-{名字或代号}.md`。
+3. **报告层**（`skills/report.skill.md`）：基于完整对话记录，按模板做多维分析与表层/深层对照。内含维度完整性检查清单，确保所有分析维度不缺失。
+4. **匹配层**（`skills/match.skill.md`）：输入两个来访者名字，读取 `output/report-{A}.md` 和 `output/report-{B}.md`，交叉分析匹配度，输出 `output/match-{A}-{B}.md`。
 
 ## 全局约束
 
