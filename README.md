@@ -8,30 +8,61 @@ Ariadne（阿里阿德涅）是一个纯 LLM 驱动的择偶需求深度洞察�
 
 ---
 
-## 使用方式
+## 快速开始
 
-> **推荐模型**：**Claude Opus** 或 **GPT-5** 级别及以上。本系统依赖模型的深度推理、长对话记忆和矛盾追踪能力，低于上述级别的模型可能导致洞察质量显著下降。
+> **模型要求**：**Claude Opus** 或 **GPT-5** 级别及以上。本系统依赖深度推理、长对话记忆和矛盾追踪能力，低于上述级别的模型可能导致洞察质量显著下降。
 
-### 第一步：问询对话
+### 1. 克隆项目
 
-1. 将 `skills/interview.skill.md` 的内容设为 LLM 的 System Prompt
-2. 开始对话，AI 会以 Ariadne 的角色引导你完成 15-25 轮深度问询
-3. 对话开头会请你提供一个**名字或代号**，用于后续报告命名
-4. 对话结束后，保存完整的对话记录
+```bash
+git clone https://github.com/aspect-build/Ariadne.git
+```
 
-### 第二步：生成报告
+### 2. 用 Cursor 打开项目目录
 
-1. 将 `skills/report.skill.md` 的内容设为 LLM 的 System Prompt
-2. 在用户消息中粘贴第一步的完整对话记录
-3. AI 会生成一份结构化的择偶洞察报告，文件名为 `report-{你的名字或代号}.md`
+```bash
+cursor Ariadne/
+```
 
-### 第三步（可选）：匹配分析
+也可以用其他支持项目级 System Prompt 的 AI IDE 或 LLM 客户端打开（见下方"其他平台"）。
 
-如果有两个人分别完成了问询并生成了各自的报告，可以进行匹配分析：
+### 3. 开始问询
 
-1. 将 `skills/match.skill.md` 的内容设为 LLM 的 System Prompt
-2. 提供两个来访者的名字或代号，AI 会读取 `output/report-{A}.md` 和 `output/report-{B}.md`
-3. 生成匹配分析报告 `match-{A}-{B}.md`，评估两人在恋爱、友谊、协作等关系类型中的匹配度
+在 Cursor 对话框中输入：
+
+> **让我们开始问询吧**
+
+AI 会自动读取项目中的 Skill 和知识库，以 Ariadne 的角色引导你完成 **15-25 轮**深度问询。对话开头会请你提供一个**名字或代号**，用于后续报告命名。
+
+### 4. 生成报告
+
+问询结束后，在对话框中输入：
+
+> **根据上面的对话生成择偶洞察报告**
+
+AI 会生成报告并保存为 `output/report-{你的名字或代号}.md`。
+
+### 5. 匹配分析（可选）
+
+如果有两个人各自完成了问询并生成了报告（如 `report-hikari.md` 和 `report-rango.md`），在对话框中输入：
+
+> **分析 hikari 和 rango 的匹配度**
+
+AI 会读取两份报告，生成匹配分析报告 `output/match-hikari-rango.md`。
+
+---
+
+### 其他平台使用方式
+
+如果不使用 Cursor，可以在任何 LLM 平台上手动操作：
+
+| 步骤 | 操作 |
+|------|------|
+| **问询** | 将 `skills/interview.skill.md` 全文复制为 System Prompt，开始对话 |
+| **报告** | 将 `skills/report.skill.md` 设为 System Prompt，粘贴完整对话记录 |
+| **匹配** | 将 `skills/match.skill.md` 设为 System Prompt，粘贴两份报告内容 |
+
+支持的平台：Claude（Project Instructions）、ChatGPT（自定义指令）、API Playground（System 栏）等。
 
 ---
 
