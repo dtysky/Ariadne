@@ -44,11 +44,11 @@ AI 会生成报告并保存为 `output/report-{你的名字或代号}.md`。
 
 ### 5. 匹配分析（可选）
 
-如果有两个人各自完成了问询并生成了报告（如 `report-hikari.md` 和 `report-rango.md`），在对话框中输入：
+如果有两个人各自完成了问询并生成了报告（如 `report-me.md` 和 `report-friend.md`），在对话框中输入：
 
-> **分析 hikari 和 rango 的匹配度**
+> **分析 me 和 friend 的匹配度**
 
-AI 会读取两份报告，生成匹配分析报告 `output/match-hikari-rango.md`。
+AI 会读取两份报告，生成匹配分析报告 `output/match-me-friend.md`。
 
 ---
 
@@ -100,6 +100,10 @@ Ariadne/
 
 查看 `examples/sample-report.md` 了解报告的完整格式和分析深度。
 
+## 作者
+
+**dtysky** — [dtysky@outlook.com](mailto:dtysky@outlook.com)
+
 ## 许可证
 
-MIT
+GPL-3.0
