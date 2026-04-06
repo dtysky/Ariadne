@@ -18,17 +18,27 @@ Ariadne（阿里阿德涅）是一个纯 LLM 驱动的择偶需求深度洞察�
 git clone https://github.com/aspect-build/Ariadne.git
 ```
 
-### 2. 用 Cursor 打开项目目录
+### 2. 用 Agent IDE 打开项目目录（Cursor / Codex / 其他）
 
 ```bash
 cursor Ariadne/
+# 或
+codex Ariadne/
 ```
 
-也可以用其他支持项目级 System Prompt 的 AI IDE 或 LLM 客户端打开（见下方"其他平台"）。
+本项目已做通用化目录适配：
+
+- `skills/` 是唯一的 Skill 源目录
+- `rules/` 是唯一的 Rule 源目录
+- `.cursor/skills`、`.codex/skills` 都是指向 `skills/` 的软链接
+- `.cursor/rules` 是指向 `rules/` 的软链接
+- `.codex/rules` 是指向 `rules/` 的软链接
+
+更多代理使用约定见 `Agents.md`。
 
 ### 3. 开始问询
 
-在 Cursor 对话框中输入：
+在对话框中输入：
 
 > **让我们开始问询吧**
 
@@ -54,7 +64,7 @@ AI 会读取两份报告，生成匹配分析报告 `output/match-me-friend.md`�
 
 ### 其他平台使用方式
 
-如果不使用 Cursor，可以在任何 LLM 平台上手动操作：
+如果不使用 IDE 内置规则系统，可以在任何 LLM 平台上手动操作：
 
 | 步骤 | 操作 |
 |------|------|
@@ -62,7 +72,7 @@ AI 会读取两份报告，生成匹配分析报告 `output/match-me-friend.md`�
 | **报告** | 将 `skills/report.skill.md` 设为 System Prompt，粘贴完整对话记录 |
 | **匹配** | 将 `skills/match.skill.md` 设为 System Prompt，粘贴两份报告内容 |
 
-支持的平台：Claude（Project Instructions）、ChatGPT（自定义指令）、API Playground（System 栏）等。
+支持的平台：Cursor、Codex、Claude（Project Instructions）、ChatGPT（自定义指令）、API Playground（System 栏）等。
 
 ---
 
@@ -70,10 +80,20 @@ AI 会读取两份报告，生成匹配分析报告 `output/match-me-friend.md`�
 
 ```
 Ariadne/
+├── Agents.md                   # 多 Agent 通用入口说明
+├── rules/                      # Rule 文件（通用规则源目录）
+│   ├── ariadne-project.mdc
+│   └── ariadne-skills-knowledge.mdc
 ├── skills/                     # Skill 文件（作为 LLM System Prompt 使用）
 │   ├── interview.skill.md      # 问询对话 Skill —— 驱动深度问询对话
 │   ├── report.skill.md         # 报告生成 Skill —— 基于对话生成洞察报告
 │   └── match.skill.md          # 匹配分析 Skill —— 基于两份报告分析匹配度
+├── .cursor/
+│   ├── skills -> ../skills     # 兼容 Cursor 的软链接
+│   └── rules  -> ../rules      # 兼容 Cursor 的软链接
+├── .codex/
+│   ├── skills -> ../skills     # 兼容 Codex 的软链接
+│   └── rules  -> ../rules      # 兼容 Codex 的软链接
 ├── knowledge/                  # 知识库（分析框架与参考资料）
 │   ├── framework.md            # 择偶心理分析框架
 │   ├── dimensions.md           # 问询维度与问题库
